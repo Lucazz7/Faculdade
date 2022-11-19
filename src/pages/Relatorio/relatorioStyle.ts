@@ -11,7 +11,9 @@ export const ContainerRelatorio = styled.div`
 `;
 
 export const IframesLooker = styled.iframe`
-  width: 100%;
   height: 100%;
   background: ${({ theme }) => theme.bg3};
+  display: flex;
+  align: center;
+  justify-content: center;
 `

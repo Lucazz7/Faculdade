@@ -10,7 +10,9 @@ import { If } from "../operators";
 import chuva from "../../Image/chuvaAnim2.jpg";
 import sol from "../../Image/sol.jpg";
 import nublado from "../../Image/nublado.jpg";
+import { ThemeProvider } from "styled-components";
 import './animations.css';
+
 
 
 import {
@@ -32,6 +34,7 @@ import {
   IconsHistory,
   LiHistory,
 } from "./dashboardStyled";
+import ChatBot from "react-simple-chatbot";
 
 import "./estilo.scss";
 import "./estiloHexagoHistory.scss";
@@ -44,7 +47,7 @@ import {
   BsSunFill,
   BsXLg,
 } from "react-icons/bs";
-import { BiCheck } from "react-icons/bi";
+import { BsFillChatDotsFill } from "react-icons/bs";
 import { FaTemperatureHigh } from "react-icons/fa";
 import { VscDebugStepBack } from "react-icons/vsc";
 import { TbHexagons } from "react-icons/tb";
@@ -52,6 +55,8 @@ import { RootState } from "../../Redux/store";
 import { useAppDispatch } from "../../hooks/useTypeSelector";
 import { getBlocks, getBlocksMap, getForeCast } from "../../services/dashboard-services";
 import { PrevisionFuture, PrevisionPast, PrevisionPresent } from "./CardsPrevision/previsionCards";
+import { IframesLooker } from "../Relatorio/relatorioStyle";
+
 
 // Type para gerenciar os ícones de previsões
 interface Prevision {
@@ -116,6 +121,7 @@ export const DashBoard = () => {
   const [indexForeCast, setIndexForeCast] = useState<number | undefined>();
   const [forCastFront, setForCastFront] = useState('+10');
   const [forCastBack, setForCastBack] = useState('-10');
+  const [openChat, setOpenChat] = useState(false)
 
   // dispatch redux / navigate routers
   const navigate = useNavigate();
@@ -299,10 +305,129 @@ export const DashBoard = () => {
 
   }, [dispatch, blockCLicked])
 
+  const theme = {
+    background: '#f5f8fb',
+    fontFamily: 'Helvetica Neue',
+    headerBgColor: 'black',
+    headerFontColor: '#fff',
+    headerFontSize: '15px',
+    botBubbleColor: 'black',
+    botFontColor: '#fff',
+    userBubbleColor: '#fff',
+    userFontColor: '#4a4a4a',
+  };
 
   return (
     <Container>
       <div className="blocksGeneration">
+      <div className="buttonChat">
+      <BsFillChatDotsFill onClick={() => setOpenChat(!openChat)}/>
+      </div>
+      {openChat ? <div className="chat">
+      <ThemeProvider theme={theme}>
+
+<ChatBot
+    steps={[
+      {
+        id: 'BOT/intro',
+        message: 'Seja bem vindo a Agro Future. Seu nome por favor ?',
+        trigger: '2',
+      },
+      {
+        id: '2',
+        user: true,
+        trigger: '3',
+      },
+      {
+        id: '3',
+        message: '{previousValue}, como posso te ajudar ?',
+        trigger: '4',
+      },
+      {
+        id: "4",
+        options: [
+          { label: "Compra de novos equipamentos!", trigger: "BOT/infoEquipamentos" },
+          { label: "Guia de navegação", trigger: "BOT/infoNavegacao" },
+          { label: "Duvidas?", trigger: "BOT/infoNavegacaoss" }
+        ]
+      },
+         //TODO Guia informação
+         {
+          id: "BOT/infoNavegacao",
+          message: "Qual pagina gostaria de navegação!",
+          trigger: "BOT/telasInfo"
+        },
+        {
+          id: "BOT/telasInfo",
+          options: [
+            { label: "Blocos", trigger: "BOT/sucesso" },
+            { label: "Mapa", trigger: "BOT/sucesso" },
+            { label: "Usuários ", trigger: "BOT/sucesso" }
+          ]
+        },
+        {
+          id: "BOT/sucesso",
+          message: "Compra Efetuada com sucesso.",
+          trigger: 'BOT/finish'
+        },
+        {
+          id: "BOT/finish",
+          message: "Logo lhe enviaremos mais informações em seu email, obrigado",
+          end: true,
+        },
+      // //TODO Compra de produto
+      {
+        id: "BOT/infoNavegacaoss",
+        message: "Temos tres pacotes de equipamentossss!",
+        trigger: "BOT/optionEquips"
+      },
+      {
+        id: "BOT/optionEquips",
+        options: [
+          { label: "Pacote 1 Basic!", trigger: "BOT/sucesso" },
+          { label: "Pacote 2 Plus", trigger: "BOT/sucesso" },
+          { label: "Pacote 3 Plus+ ", trigger: "BOT/sucesso" }
+        ]
+      },
+      {
+        id: "BOT/sucesso",
+        message: "Compra Efetuada com sucesso.",
+        trigger: 'BOT/finish'
+      },
+      {
+        id: "BOT/finish",
+        message: "Logo lhe enviaremos mais informações em seu email, obrigado!",
+        end: true,
+      },
+
+      {
+        id: "BOT/infoEquipamentos",
+        message: "Temos tres pacotes de equipamentos!",
+        trigger: "BOT/optionEquips"
+      },
+      {
+        id: "BOT/optionEquips",
+        options: [
+          { label: "Pacote 1 Basic!", trigger: "BOT/sucesso" },
+          { label: "Pacote 2 Plus", trigger: "BOT/sucesso" },
+          { label: "Pacote 3 Plus+ ", trigger: "BOT/sucesso" }
+        ]
+      },
+      {
+        id: "BOT/sucesso",
+        message: "Compra Efetuada com sucesso.",
+        trigger: 'BOT/finish'
+      },
+      {
+        id: "BOT/finish",
+        message: "Logo lhe enviaremos mais informações em seu email, obrigado",
+        end: true,
+      }
+      
+    ]}
+  />
+  </ThemeProvider>
+      </div> : ''}
         <DivIconsBlocks>
           <ContainerTitleBt>
             <If condition={initialBlock}>
@@ -568,6 +693,8 @@ export const DashBoard = () => {
           </div>
         </DivIconsPrevision>
       </div >
+
+
 
 
     </Container >
