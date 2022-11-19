@@ -12,6 +12,7 @@ RA: 920127359.
 Projeto feito para fundo acadêmicos e estudos.
 
 License Copyright: AgroFuture.
+
 License License: "Everyone is permitted to copy and distribute verbatim copies of this license document, but changing it is not allowed." (www.gnu.org/licenses/gpl-3.0.en.html).
 
 <h2><span style="color:#2d7eea">Execução do projeto</span></h2>
