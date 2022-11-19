@@ -6,8 +6,6 @@ Nome: Lucas Carlos dos Santos.
 
 RA: 920127359.
 
-
-
 <h2><span style="color:#2d7eea">GNU General Public License version 3</span></h2>
 
 Projeto feito com objetivos acadêmicos.
@@ -22,7 +20,7 @@ SPDX short identifier: GPL-3.0-only
 
 1 - node.js version v16.16.0
 
-2 - Yarn ou npm install para instalar as dependerias 
+2 - Yarn ou npm install para instalar as dependerias
 
 3 - yarn dev para executar apenas o projeto
 
@@ -31,4 +29,3 @@ SPDX short identifier: GPL-3.0-only
 5 - yarn start executa ambos tanto json-server junto ao projeto
 
 <h2><span style="color:#2d7eea"></span></h2>
-
