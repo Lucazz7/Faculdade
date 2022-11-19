@@ -1,14 +1,11 @@
-import { configureStore } from '@reduxjs/toolkit';
-import propsMaps from './redux-DashBoard';
-import duckUsers from './redux-Users';
-import propsAuthentication from './redux-authentication';
+import { configureStore } from "@reduxjs/toolkit";
+import propsMaps from "./redux-DashBoard";
+import duckUsers from "./redux-Users";
 const store = configureStore({
-    reducer: {
-        dashboardMap: propsMaps,
-        duckUsers,
-        propsAuthentication,
-
-    }
+  reducer: {
+    dashboardMap: propsMaps,
+    duckUsers,
+  },
 });
 
 export default store;
