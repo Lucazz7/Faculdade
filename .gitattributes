@@ -1,0 +1,2 @@
+# Chaves privadas do certificado
+*.env filter=git-crypt diff=git-crypt
