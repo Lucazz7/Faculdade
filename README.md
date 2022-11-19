@@ -3,17 +3,20 @@
 <h2><span style="color:#2d7eea"> AgroFuture </span></h2>
 
 Nome: Lucas Carlos dos Santos.
+
 RA: 920127359.
 
 
 
 <h2><span style="color:#2d7eea">GNU General Public License version 3</span></h2>
 
-Projeto feito para fundo acadêmicos e estudos.
+Projeto feito com objetivos acadêmicos.
 
 License Copyright: AgroFuture.
 
 License License: "Everyone is permitted to copy and distribute verbatim copies of this license document, but changing it is not allowed." (www.gnu.org/licenses/gpl-3.0.en.html).
+
+SPDX short identifier: GPL-3.0-only
 
 <h2><span style="color:#2d7eea">Execução do projeto</span></h2>
 
