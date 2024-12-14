@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const ContainerRelatorio = styled.div`
   background: ${({ theme }) => theme.bg3};
@@ -16,4 +16,4 @@ export const IframesLooker = styled.iframe`
   display: flex;
   align: center;
   justify-content: center;
-`
+`;
